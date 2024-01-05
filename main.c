@@ -1,5 +1,6 @@
-#include <stdio.h>
+#include "sheet.h"
+
 int main(int argc, char **argv) {
-    printf("hello");
-    
+    prompt();
+    return 0;
 }   
