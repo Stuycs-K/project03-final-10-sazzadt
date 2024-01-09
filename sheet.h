@@ -16,6 +16,6 @@
 #ifndef SHEET_H
 #define SHEET_H
     struct sheet{int **data; int dim[2];};
-    int prompt();
+    int* prompt();
     void err(int i, char*message);
 #endif

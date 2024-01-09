@@ -1,11 +1,11 @@
 #include "sheet.h"
 
-int prompt() { 
+int* prompt() { 
     int r,c;
     char buff[BUFF_SIZE];
     int proper_input = 0;
     while(!proper_input) {
-      printf("Enter the # of rows in the spreadsheet (only numeric characters): ");
+      printf("Enter the # of rows in the spreadsheet: ");
       int letter_found = 0;
       fgets(buff, BUFF_SIZE, stdin);
       buff[strlen(buff) - 1] = '\0';
@@ -17,8 +17,27 @@ int prompt() {
       }
       if(letter_found == 0) {proper_input = 1;}
     }
-    r = (int) (buff);
-    printf("Rows: %s", buff);
+    sscanf(buff, "%d", &r);
+
+    proper_input = 0;
+    while(!proper_input) {
+      printf("Enter the # of cols in the spreadsheet: ");
+      int letter_found = 0;
+      fgets(buff, BUFF_SIZE, stdin);
+      buff[strlen(buff) - 1] = '\0';
+      for(int i = 0; i < strlen(buff) && !letter_found; i++) {
+        if(!isdigit( buff[i] )) {
+          printf("Please enter only numeric characters, no negatives\n");
+          letter_found = 1;
+        }
+      }
+      if(letter_found == 0) {proper_input = 1;}
+    }
+    sscanf(buff, "%d", &c);
+    static int dims[2];
+    dims[0] = r;
+    dims[1] = c;
+    return dims;
 }
 
 void err(int i, char*message){
