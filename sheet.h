@@ -17,5 +17,10 @@
 #define SHEET_H
     struct sheet{int **data; int dim[2];};
     int* prompt();
-    void err(int i, char*message);
+    int checkNum(char* s);
+    void userPrompt(char* dest, char* message);
+    void err(char*message);
+    void initialize(struct sheet s);
+    void displayRow(int* row, int num_cols);
+    void display(struct sheet s);
 #endif
